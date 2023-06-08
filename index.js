@@ -7,11 +7,13 @@ app.use(express.json());
 
 app.get("/", async (req, res) => {
 	try {
+		const text = req.query.text.toString();
+
 		let formData = new FormData();
 		formData.append("locale", "hi-IN");
 		formData.append(
 			"content",
-			`<voice name="hi-IN-MadhurNeural">My name is Ravi</voice>`
+			`<voice name="hi-IN-MadhurNeural">${text ?? "My name is Ravi"}</voice>`
 		);
 		formData.append("ip", "2405:204:300e:4c03::b4c:e8a4");
 
